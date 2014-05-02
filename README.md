@@ -15,7 +15,6 @@ The following instructions assume basic familiarity with R.
 
 Now you are ready to calculate the mean, 95% CI, SEM, Cohen’s d, and statistical power for any subsample in the co2df.csv dataset
 
-————————————————————————————————————————————————————————————————
 Examples.
 (Note that quotes in 'wheat' and similar are NOT “smart quotes”, i.e. not ‘wheat’ or “wheat”)
 
