@@ -1,22 +1,25 @@
 This R code is provided for analyzing the CO2 dataset available at the Dryad depository:
 www.datadryad.org, under DOI: 10.5061/dryad.6356f
+For details on the dataset, please, see "Materials and methods" here:
+http://dx.doi.org/10.7554/eLife.02245
 
 For any questions or assistance with running it, please, email Irakli Loladze at loladze@asu.edu
 
 The following instructions assume basic familiarity with R.
 
-1) download co2df.csv from Dryad and place it into your working directory for R.
+1) download CO2 dataset in "CSV" format, co2df.csv, from Dryad and place it into your working directory for R.
 
-2) download pwr.boot.R file from GitHub and place it into your working directory for R.
+2) download pwr.boot.R file from GitHub: http://github.com/loladze/co2.git
+and place it into your working directory for R.
 
 3) load the dataset by running: co2df <- read.csv('co2df.csv')
 
-4) Source pwr.boot function by running: source('REPLACE WITH YOUR WORKING DIRECTORY PATH/pwr.boot.R')
+4) Source pwr.boot function by running: source('pwr.boot.R')
 
-Now you are ready to calculate the mean, 95% CI, SEM, Cohen’s d, and statistical power for any subsample in the co2df.csv dataset
+Now you are ready to calculate the mean, 95% CI, SEM, Cohen’s d, and statistical power for any subset in the co2df.csv dataset
 
 Examples.
-(Note that quotes in 'wheat' and similar are NOT “smart quotes”, i.e. not ‘wheat’ or “wheat”)
+(Note that quotes in 'wheat' and other examples are NOT “smart quotes”, i.e. not ‘wheat’ or “wheat”)
 
 To generate results for:
 
@@ -59,4 +62,4 @@ To generate results for:
 NOTE: Since the input in co2df.csv is given as the log response ratio, you can translate the output back from the log form by calculating expt(result)-1. 
 For example, suppose the mean is -0.096, i.e. the decline of -9.6%. Calculating exp(-0.096)-1=-0.0915, yields the decline of 9.15%.
 
-All the results reported in the paper are already back-translated from the log form.
+All the results reported in the eLife article are already back-translated from the log form.
