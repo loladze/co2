@@ -1,13 +1,37 @@
 The R sript 'pwr.boot.R' allows to reproduce individual results reported in:
 
 Loladze (2014) "Hidden shift of the ionome of plants exposed to elevated CO2 
-depletes minerals at the base of human nutrition" eLife doi:10.7554/eLife.02245
+depletes minerals at the base of human nutrition" eLife, freely available at 
+(open-access):
+http://elifesciences.org/content/3/e02245
 
 The analytical dataset is available here at the same GitHub depository as the R 
 script in two formats CSV and XLSX: 'co2df.csv' and 'CO2 Dataset.xlsx'
 
+The dataset reflects 7,761 observations of elevated CO2 effects on the plant 
+ionome, covering 27 chemical elements in 130 plant varieties (125 C3 plants and 
+5 C4 plants), including:
+wheat, rice, barely, bean, potato, rye, tomato, radish, 
+cucumber, soybean, turnip, lettuce, carrot, alfalfa, celery, spinach, 
+strawberry, rapeseed, and many trees and grasses.
+
+It includes data on Nitrogen (N), phosphorus (P), calcium (Ca), Copper (Cu), 
+Sulfur (S), Magnesium (Mg), Manganese (Mn), and Iron (Fe) & Zinc (Zn) – the 
+latter being deficient in diets of over two billion people.
+
+The full list of chemical elements covered:
+Al B Ba Br C Ca Cd Cl Co Cr Cu Fe K Mg Mn Mo N Na Ni P Pb S Se Si Sr V Zn
+
+The data comes from many countries on four continents, including:
+
+Australia, Bangladesh, Belgium, China, Denmark, Finland, Germany, India, Japan, 
+Philippines, Sweden,  UK, USA.  
+
+
 For details on how I complied and generated the dataset, please, see "Materials 
-and methods" section of the paper: http://dx.doi.org/10.7554/eLife.02245
+and methods" section of the paper:
+http://elifesciences.org/content/3/e02245
+
 
 For any questions or assistance with the script or the dataset, please, email:
 Irakli Loladze at loladze@asu.edu
