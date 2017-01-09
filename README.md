@@ -49,6 +49,7 @@ Examples.
 To generate results for:
 
 1) calcium (Ca) in wheat grains:
+
 ```
 > co2df %>%
         filter(name == 'wheat', tissue == 'grain', element == 'Ca') %>%
@@ -60,6 +61,7 @@ To generate results for:
 1 -0.1053 -0.1691 -0.0423 0.3451    21 0.0344      0.3248
 ```
 2) Individual chemical elements in wheat (all tissues):
+
 ```
 > co2df %>%
         filter(name=='wheat') %>%
@@ -79,7 +81,7 @@ To generate results for:
 9        K -0.0314 -0.0760  0.0132 0.5811    25 0.0278      0.3672
 10      Mg -0.1295 -0.1870 -0.0799 0.5309    24 0.0346      0.3017
 # ... with 11 more rows
-
+```
 3) Iron (Fe) for all the foliar tissues:
 ```
 > co2df %>%
