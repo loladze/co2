@@ -53,44 +53,90 @@ To generate results for:
 > co2df %>%
         filter(name == 'wheat', tissue == 'grain', element == 'Ca') %>%
         .$log.r %>% pwr.boot()
-        
-       mean        2.5%       97.5%       power sample size         SEM   Cohen's d 
--0.10529048 -0.16998095 -0.04269000  0.34870000 21.00000000  0.03442054  0.32481594 
+ 
+# A tibble: 1 × 7
+     mean  `2.5%` `97.5%`  power  size    SEM `Cohen's d`
+    <dbl>   <dbl>   <dbl>  <dbl> <dbl>  <dbl>       <dbl>
+1 -0.1053 -0.1691 -0.0423 0.3451    21 0.0344      0.3248
 ```
-2) iron (Fe) for all the foliar tissues:
+2) Individual chemical elements in wheat (all tissues):
+```
+> co2df %>%
+        filter(name=='wheat') %>%
+        group_by(element) %>%
+        do(pwr.boot(.$log.r))
+        
+   element    mean    `5%`   `95%`  power  size    SEM `Cohen's d`
+     <chr>   <dbl>   <dbl>   <dbl>  <dbl> <dbl>  <dbl>       <dbl>
+1        B  0.0987      NA      NA     NA     6 0.0939      0.2381
+2        C  0.1417      NA      NA     NA     2     NA          NA
+3       Ca -0.1210 -0.1721 -0.0715 0.5113    29 0.0320      0.2956
+4       Cd -0.0076      NA      NA     NA     6 0.0939      0.2381
+5       Co -0.3567      NA      NA     NA     1     NA          NA
+6       Cr -0.0094      NA      NA     NA     2     NA          NA
+7       Cu -0.0612 -0.1062 -0.0166 0.5866    25 0.0279      0.3655
+8       Fe -0.1421 -0.1842 -0.1037 0.6968    33 0.0253      0.3495
+9        K -0.0314 -0.0760  0.0132 0.5811    25 0.0278      0.3672
+10      Mg -0.1295 -0.1870 -0.0799 0.5309    24 0.0346      0.3017
+# ... with 11 more rows
+
+3) Iron (Fe) for all the foliar tissues:
 ```
 > co2df %>%
       filter(fol.ed == 'F', element == 'Fe') %>%
       .$log.r %>% pwr.boot()
-       mean        2.5%       97.5%       power sample size         SEM   Cohen's d 
--0.09630615 -0.17929973 -0.01692485  0.24540000 65.00000000  0.04245147  0.14722696 
+      
+# A tibble: 1 × 7
+     mean  `2.5%` `97.5%`  power  size    SEM `Cohen's d`
+    <dbl>   <dbl>   <dbl>  <dbl> <dbl>  <dbl>       <dbl>
+1 -0.0963 -0.1801 -0.0144 0.2278    65 0.0425      0.1472
 ```
 
-3) nitrogen (N) in all the edible tissues:
+4) Individual elements in all the edible tissues:
 
 ```
 > co2df %>%
-        filter(fol.ed == 'E', element == 'N') %>% .$log.r %>% pwr.boot()
-       mean        2.5%       97.5%       power sample size         SEM   Cohen's d 
--0.15065250 -0.18214769 -0.11573969  0.81630000 40.00000000  0.01747011  0.45829166 
+        filter(fol.ed == 'E') %>%
+        group_by(element) %>% 
+        do(pwr.boot(.$log.r))
+        
+   element    mean  `2.5%` `97.5%`  power  size    SEM `Cohen's d`
+     <chr>   <dbl>   <dbl>   <dbl>  <dbl> <dbl>  <dbl>       <dbl>
+1       Al  0.4812      NA      NA     NA     1     NA          NA
+2        B  0.0767 -0.0038  0.1619 0.1079     9 0.0742      0.2381
+3       Ba -0.0943      NA      NA     NA     1     NA          NA
+4        C  0.0915  0.0176  0.1754 0.1068    10 0.0700      0.2381
+5       Ca -0.0474 -0.0828 -0.0134 0.8188    55 0.0182      0.3746
+6       Cd -0.1048 -0.3102  0.0535 0.1210    18 0.0984      0.1233
+7       Co -0.3567      NA      NA     NA     1     NA          NA
+8       Cr -0.0936 -0.2268  0.0389 0.1169     7 0.0857      0.2381
+9       Cu -0.0703 -0.1298 -0.0159 0.4459    52 0.0300      0.2337
+10      Fe -0.1025 -0.1533 -0.0536 0.5230    65 0.0261      0.2398
+# ... with 13 more rows
 ```
 
-4) magnesium (Mg) in C3 plants:
+5) magnesium (Mg) in C3 plants:
 ```
 > co2df %>%
       filter(c3.c4 == 'C3', element == 'Mg') %>%
       .$log.r %>% pwr.boot()
-        mean         2.5%        97.5%        power  sample size          SEM    Cohen's d 
- -0.09987317  -0.12900039  -0.07361217   0.95290000 123.00000000   0.01421605   0.31842785 
+      
+# A tibble: 1 × 7
+     mean  `2.5%` `97.5%`  power  size    SEM `Cohen's d`
+    <dbl>   <dbl>   <dbl>  <dbl> <dbl>  <dbl>       <dbl>
+1 -0.0999 -0.1282 -0.0736 0.9489   123 0.0142      0.3184
  ```
 
-5) all the minerals (not counting carbon (C) or N) in edible tissues:
+6) all the minerals (not counting carbon (C) or nitrogen (N)) in edible tissues:
 ```
 > co2df %>%
        filter(fol.ed == 'E', !(element %in% c('C', 'N'))) %>%
        .$log.r %>% pwr.boot()
-         mean          2.5%         97.5%         power   sample size           SEM     Cohen's d 
- -0.066409551  -0.081599288  -0.051955346   1.000000000 534.000000000   0.007532951   0.287502259 
+       
+# A tibble: 1 × 7
+     mean  `2.5%` `97.5%` power  size    SEM `Cohen's d`
+    <dbl>   <dbl>   <dbl> <dbl> <dbl>  <dbl>       <dbl>
+1 -0.0664 -0.0812  -0.052     1   534 0.0075      0.2875
  ```
 
 NOTE: Since the input in co2df.csv is given as the log response ratio, you can 
